@@ -1,0 +1,32 @@
+{
+  "name": "full-stack-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Qoosim/full-stack-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Qoosim/full-stack-api/issues"
+  },
+  "homepage": "https://github.com/Qoosim/full-stack-api#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "helmet": "^7.0.0",
+    "mongoose": "^7.4.1",
+    "morgan": "^1.10.0",
+    "validator": "^13.9.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
