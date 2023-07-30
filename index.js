@@ -17,9 +17,9 @@ app.use(morgan('common'));
 // Connect to the database
 connectDB();
 // Routes
-app.use('/', (req, res) => {
-  res.send("Welcome to my Juubix");
-})
+//app.use('/', (req, res) => {
+ // res.send("Welcome to my Juubix");
+//})
 const authRoutes = require("./routes/auth");
 const postRoutes = require("./routes/posts");
 app.use("/api/auth", authRoutes);
