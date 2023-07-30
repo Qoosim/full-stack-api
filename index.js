@@ -1,20 +1,29 @@
-const express = require('express');
-const app = express();
-const mongoose = require('mongoose');
+const express = require("express");
+const dotenv = require("dotenv");
 const morgan = require('morgan');
-const dotenv = require('dotenv');
-dotenv.config();
-const authRouter = require('./routes/auth');
-const userRouter = require('./routes/user');
+const connectDB = require("./config/db");
+const authMiddleware = require("./middleware/auth");
+const cors = require("cors");
+const app = express();
 
-mongoose.connect(process.env.MONGO_URL);
+dotenv.config();
 
 // Middleware
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 app.use(morgan('common'));
 
-// routes
-app.use('/api/auth', authRouter);
-app.use('/api/users', userRouter);
+// Connect to the database
+connectDB();
+// Routes
+const authRoutes = require("./routes/auth");
+const postRoutes = require("./routes/posts");
+app.use("/api/auth", authRoutes);
+app.use("/api/posts", authMiddleware, postRoutes);
 
-app.listen(5000, () => console.log('Server is listening on the port 5000'));
+// Start the server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server started on port ${PORT}`);
+});
