@@ -21,7 +21,7 @@ const handleErrors = (err) => {
 }
 
 // Signup
-const signup = async (req, res) => {
+const register = async (req, res) => {
   const { username, email, password } = req.body;
   try {
     const user = await User.create({ username, email, password });
@@ -52,6 +52,6 @@ const login = async (req, res) => {
 }
 
 module.exports = {
-  signup,
+  register,
   login
 };
